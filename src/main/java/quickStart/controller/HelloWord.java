@@ -7,6 +7,13 @@ package quickStart.controller;
 public class HelloWord {
     public String name;
 
+    public HelloWord() {
+    }
+
+    public HelloWord(String name) {
+        this.name = name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
