@@ -1,8 +1,8 @@
 package quickStart.controller;
-import org.junit.jupiter.api.DynamicTest;
-import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import quickStart.Bean.HelloWord;
+
 /**
  * @Description
  * @date 2020/11/12 0012-22:09

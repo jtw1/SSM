@@ -1,4 +1,4 @@
-package quickStart.controller;
+package quickStart.Bean;
 
 /**
  * @Description

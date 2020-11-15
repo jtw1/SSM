@@ -1,23 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="helloWorld" class="quickStart.controller.HelloWord">
+                           http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <bean id="helloWorld" class="quickStart.Bean.HelloWord">
         <property name="name" value="spring"></property>
     </bean>
-    <bean id="helloWorld1" class="quickStart.controller.HelloWord">
+    <bean id="helloWorld1" class="quickStart.Bean.HelloWord">
         <property name="name" value="spring01"></property>
     </bean>
-    <bean id="helloWorld2" class="quickStart.controller.HelloWord">
+    <bean id="helloWorld2" class="quickStart.Bean.HelloWord">
         <!--调用有参构造器创建对象并赋值-->
         <constructor-arg name="name" value="wjt"></constructor-arg>
     </bean>
 
-    <bean id="person" class="quickStart.controller.Person">
+    <bean id="person" class="quickStart.Bean.Person">
         <constructor-arg name="lastName" value="mm"></constructor-arg>
         <constructor-arg name="email" value="asd@163.com"></constructor-arg>
         <constructor-arg name="gender" value="男"></constructor-arg>
         <constructor-arg name="age" value="18"></constructor-arg>
     </bean>
+    <!--实验四:为复杂类型的属性赋值-->
+    <bean id="car1" class="quickStart.Bean.Car">
+        <property name="carName" value="benchi"></property>
+        <property name="color" value="白色"></property>
+        <property name="price" value="300000"></property>
+    </bean>
+
+    <bean id="person4" class="quickStart.Bean.Person">
+        <!--ref:代表引用外面的一个值 car=ioc.getBean("car1")-->
+        <!--<property name="car" ref="car1"></property>-->
+        <property name="car">
+            <bean id="car2" class="quickStart.Bean.Car">
+                <property name="carName" value="宝马"></property>
+                <property name="color" value="白色"></property>
+                <property name="price" value="500000"></property>
+            </bean>
+        </property>
+        <!--如何位List类型赋值-->
+        <property name="cars">
+            <!--相当于books=new ArrayList<book>() -->
+            <list>
+               <!--为list添加元素-->
+                <bean class="quickStart.Bean.Car" >
+                    <property name="price" value="20000"></property>
+                    <property name="carName" value="奥迪"></property>
+                    <property name="color" value="黑色"></property>
+                </bean>
+                <!--引用外部元素-->
+                <ref bean="car1"/>
+            </list>
+        </property>
+        <!--如何为map类型赋值-->
+        <property name="maps">
+            <map>
+                <!--一个entry代表一个键值对-->
+                <entry key="key1" value="张三"></entry>
+                <entry key="key2" value="lisi"></entry>
+                <entry key="key3" value-ref="car1"></entry>
+                <entry key="key4">
+                    <bean class="quickStart.Bean.Car">
+                        <property name="price" value="300000"></property>
+                        <property name="color" value="红色"></property>
+                        <property name="carName" value="库里南"></property>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+
+    </bean>
+
+    <bean id="person5" class="quickStart.Bean.Person">
+        <property name="maps" ref="MyMap"></property>
+    </bean>
+    <!--util名称空间创建集合类型的bean，方便引用-->
+    <util:map id="MyMap">
+    <!--添加元素 -->
+        <entry key="key6" value="wangg"></entry>
+        <entry key="key7" value="ghjfgf"></entry>
+    </util:map>
+
+    <!--parent 指定当前bean的配置信息继承于哪个，只需要写变化的信息-->
+    <bean id="person6" class="quickStart.Bean.Person" parent="person5">
+        <property name="car" ref="car1"></property>
+    </bean>
+
+    <!--静态工厂（不需要创建工厂本身）-->
+    <bean id="car5" class="quickStart.Factory.CarStaticFactory" factory-method="getCar">
+    <!--为方法指定参数-->
+        <constructor-arg name="carName" value="玛莎拉蒂"></constructor-arg>
+    </bean>
+    <!--实例工厂（需要创建工厂本身）-->
+    <bean id="carFactory2" class="quickStart.Factory.CarInstanceFactory" ></bean>
+    <bean id="car6" class="quickStart.Bean.Car" factory-bean="carFactory2"
+           factory-method="getCar">
+        <constructor-arg name="carName" value="sdf"></constructor-arg>
+    </bean>
+<!--Factorybean是spring规定的接口  实现了FactoryBean接口的类是spring可以认识的工厂类
+    ioc容器启动时不会创建实例-->
+    <bean id="MyFactoryBeanImple" class="quickStart.Factory.MyFactoryBeanImple"></bean>
 </beans>

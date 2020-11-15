@@ -1,4 +1,7 @@
-package quickStart.controller;
+package quickStart.Bean;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Description
@@ -9,6 +12,36 @@ public class Person {
     private Integer age;
     private String gender;
     private String email;
+
+    private Car car;
+    private List<Car> cars;
+    private Map<String,Object> maps;
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public Map<String, Object> getMaps() {
+        return maps;
+    }
+
+    public void setMaps(Map<String, Object> maps) {
+        this.maps = maps;
+    }
+
+
 
     public Person() {
         super();
