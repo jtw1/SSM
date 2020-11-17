@@ -6,6 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import quickStart.Bean.Car;
 import quickStart.Bean.Person;
 
+import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +16,8 @@ import java.util.Map;
  * @date 2020/11/13-21:29
  */
 public class IOCTest {
-    private ApplicationContext ioc=new ClassPathXmlApplicationContext("META-INF/applicationContext.xml");
+    private ApplicationContext ioc=new ClassPathXmlApplicationContext("META-INF/applicationContext2.xml");
+    //private ApplicationContext ioc2=new ClassPathXmlApplicationContext("META-INF/applicationContext2.xml");
     @Test
     public void test2(){
         Object bean = ioc.getBean("person");
@@ -70,5 +73,14 @@ public class IOCTest {
         Object bean2 = ioc.getBean("MyFactoryBeanImple");
         Object bean3 = ioc.getBean("MyFactoryBeanImple");
         System.out.println(bean2==bean3);
+    }
+
+    /*
+    实验12：构造数据据库连接池
+     */
+    @Test
+    public void test12() throws SQLException {
+        DataSource bean = ioc.getBean(DataSource.class);
+        System.out.println(bean.getConnection());
     }
 }
