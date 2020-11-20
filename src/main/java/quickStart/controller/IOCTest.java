@@ -1,5 +1,6 @@
 package quickStart.controller;
 
+import MVC.servlet.BookServlet;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -82,5 +83,15 @@ public class IOCTest {
     public void test12() throws SQLException {
         DataSource bean = ioc.getBean(DataSource.class);
         System.out.println(bean.getConnection());
+    }
+
+    /*
+    实验18：DI 依赖注入
+    @Autowired 自动装配，自动为属性赋值
+     */
+    @Test
+    public void test18(){
+        BookServlet bookServlet = ioc.getBean(BookServlet.class);
+        bookServlet.doGet();
     }
 }
