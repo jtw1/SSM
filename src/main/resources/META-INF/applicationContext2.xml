@@ -11,4 +11,6 @@
         <property name="jdbcUrl" value="${jdbcUrl}"></property>
         <property name="driverClass" value="${jdbc.driverClass}"></property>
     </bean>
+
+    <context:component-scan base-package="MVC"></context:component-scan>
 </beans>
