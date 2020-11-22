@@ -23,6 +23,7 @@ public class IOCTest {
     public void test2(){
         Object bean = ioc.getBean("person");
         System.out.println(bean);
+
     }
     /*
     实验四：正确为各种属性赋值
