@@ -15,7 +15,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class AOPTest {
     ApplicationContext ioc=new ClassPathXmlApplicationContext("conf/ApplicationContextAOP.xml");
 
-
     @Test
     public void test(){
         Caculator caculator=new MathCaculator();
@@ -31,11 +30,5 @@ public class AOPTest {
     @Test
     public void test1(){
         //从IOC容器中拿到目标对象，注意，如果想要用类型，一定要用他的接口类型，不要用它的本类
-    }
-
-    //JdbcTemplate使用
-    @Test
-    public void test2(){
-
     }
 }

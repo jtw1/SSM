@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * @Description
+ * @Description JdbcTemplate使用
  * @date 2020/11/22-18:41
  */
 public class TXTest {
@@ -24,8 +24,6 @@ public class TXTest {
         System.out.println(connection);
         connection.close();
     }
-
-
 
     @Test
     public void test1(){
