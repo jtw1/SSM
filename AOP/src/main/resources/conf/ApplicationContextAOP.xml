@@ -8,7 +8,8 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/aop
-       http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
 
        <context:component-scan base-package="Exercise"></context:component-scan>
        <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
@@ -34,4 +35,26 @@
        <!--2：开启基于注解的事务控制，依赖TX名称空间-->
 <!--       <tx:annotation-driven transaction-manager="transactionManager/>-->
        <!--3：给事务方法加注解-->
+
+       <!--
+        基于XML配置的事务（依赖tx名称空间和AOP名称空间）
+        1：Spring中提供事务管理器（事务切面），配置这个事务管理器
+        2：配置出事务方法
+        3：告诉Spring哪些方法是事务方法（事务切面按我们的切入点表达式区切入事务方法）
+              -->
+<!--       <aop:config>-->
+<!--              <aop:pointcut id="txpoint" expression="execution(*事务方法所在的包*.*.*(..))"/>-->
+<!--       &lt;!&ndash;事务建议，事务增强 advice-ref:指向事务管理器的配置&ndash;&gt;-->
+<!--              <aop:advisor advice-ref="myAdvice" pointcut-ref="txpoint"/>-->
+<!--       </aop:config>-->
+
+<!--       &lt;!&ndash;配置事务管理器  事务建议 事务增强&ndash;&gt;-->
+<!--       <tx:advice id="myAdvice" transaction-manager="transactionManager">-->
+<!--              &lt;!&ndash;事务属性&ndash;&gt;-->
+<!--           <tx:attributes>-->
+<!--           &lt;!&ndash;指明哪些方法是事务方法，切入表达式只是说，事务管理器要切入这些方法，哪些方法加事务由tx:method 指定&ndash;&gt;-->
+<!--                  <tx:method name="*" propagation="REQUIRED"/>-->
+<!--           </tx:attributes>-->
+<!--       </tx:advice>-->
+<!--       &lt;!&ndash;重要的用配置，不重要的用注解&ndash;&gt;-->
 </beans>
