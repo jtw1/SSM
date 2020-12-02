@@ -12,9 +12,9 @@
     <input type="submit"/>
 </form>
 <a href="haha/handle03">handle03</a>
-<%--发起图书的增删改查请求,使用Rest风格的URL地址
-  /book/1   GET    查询一号图书
-  /book/1   DELET  删除一号图书
+<%--发起图书的增删改查请求,使用Rest风格的URL地址查询一号图书
+  /
+  /book/1   GET    book/1   DELET  删除一号图书
   /book/1   PUT    更新一号图书
   /book/1   POST   添加一号图书
 --%>
