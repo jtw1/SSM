@@ -30,5 +30,9 @@ public class RequestMappingTestController {
         return "success";
     }
 
+    @RequestMapping("/toLoginPage")
+    public String toLogin(){
+        return "login";
+    }
 
 }

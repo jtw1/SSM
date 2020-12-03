@@ -13,6 +13,7 @@
   <modules>
     <module>AOP</module>
       <module>SpringMVC</module>
+      <module>SpringMVC_CRUD</module>
   </modules>
 
   <name>IOC_Test</name>

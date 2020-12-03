@@ -35,5 +35,9 @@
     <input name="_method" value="put">
     <input type="submit" value="更新一号图书">
 </form>
+<a href="haha/toLoginPage">去登陆页面</a><br/>
+<a href="handlePlus">下载资源，各种高清无码。。。</a>
+
+
 </body>
 </html>

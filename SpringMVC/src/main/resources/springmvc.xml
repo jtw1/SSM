@@ -11,6 +11,16 @@
         <!--前后缀-->
         <property name="prefix" value="/pages/"></property>
         <property name="suffix" value=".jsp"></property>
+<!--        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>-->
+    </bean>
+    <!--自定义视图解析器 order越小，优先级越高-->
+    <bean class="Test.view.MyViewMeiNvResolverController">
+        <property name="order" value="1"></property>
+    </bean>
+    <!--让SpringMVC管理国际化资源文件，配置一个资源文件管理器,id必须是messageSource-->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <!--指定基础名-->
+        <property name="basename" value="i18n"></property>
     </bean>
     <!--开启springMVC框架注解的支持-->
     <mvc:annotation-driven/>
