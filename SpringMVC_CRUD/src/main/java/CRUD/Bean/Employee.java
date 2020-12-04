@@ -1,4 +1,4 @@
-package CRUD;
+package CRUD.Bean;
 
 import CRUD.Bean.Department;
 
@@ -15,6 +15,14 @@ public class Employee {
     private Department department;
 
     public Employee() {
+    }
+
+    public Employee(Integer id, String lastName, String email, Integer gender, Department department) {
+        this.id = id;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.department = department;
     }
 
     public Integer getId() {

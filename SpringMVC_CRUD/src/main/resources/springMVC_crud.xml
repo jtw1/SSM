@@ -10,4 +10,6 @@
         <property name="prefix" value="WEB-INF/pages/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
+
+<!--    <bean class="CRUD.DAO.departmentDao"></bean>-->
 </beans>

@@ -1,16 +1,18 @@
 package CRUD.DAO;
 
 import CRUD.Bean.Department;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Description
+ * @Description 操作部门的dao
  * @date 2020/12/3 0003-21:07
  */
-public class departmentDao {
+@Repository
+public class DepartmentDao {
     private static Map<Integer, Department> departments=null;
 
     static{
@@ -23,7 +25,20 @@ public class departmentDao {
         departments.put(105,new Department(105,"D-EE"));
     }
 
-    public Collection<Department> getDepartment(){
+    /**
+     * 返回所有部门
+     * @return
+     */
+    public Collection<Department> getAllDepartments(){
         return departments.values();
+    }
+
+    /**
+     * 按照id查询部门
+     * @param id
+     * @return
+     */
+    public Department getDepartment(Integer id){
+        return departments.get(id);
     }
 }
