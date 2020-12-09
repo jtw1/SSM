@@ -21,6 +21,22 @@ public class EmployeeController {
     EmployeeDao employeeDao;
     @Autowired
     DepartmentDao departmentDao;
+
+    /**
+     * empinfo=“empAdmin-admin@qq.com-1-101”
+     * @RequestParam("empinfo") Employee employee 相当于
+     * Employee employee=request.getParameter("empinfo")
+     * 但是现在无法将一个字符串转换成employee对象，所以需要写一个自定义类型的转换器让其工作
+     * @param employee
+     * @return
+     */
+    @RequestMapping("/quickadd")
+    public String quickAdd(@RequestParam("empinfo") Employee employee){
+        System.out.println("封装："+employee);
+        employeeDao.save(employee);
+        return "redirect:/emps";
+    }
+
     //将员工列表显示在页面
     @RequestMapping("/emps")
     public String getEmployees(Model model){
@@ -77,7 +93,7 @@ public class EmployeeController {
         return "add";
     }
     @RequestMapping(value = "/emp",method = RequestMethod.POST)
-    public String addEmp(Employee employee){
+    public String addEmp( Employee employee){
         System.out.println("要添加的员工："+employee);
         employeeDao.save(employee);
         //添加完成之后返回列表页面 重定向到查询所有员工的请求

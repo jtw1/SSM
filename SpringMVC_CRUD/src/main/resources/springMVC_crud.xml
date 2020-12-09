@@ -15,7 +15,21 @@
    <!--告诉SpringMVC自己映射的请求就自己处理，没有映射的交给tomcat处理-->
    <!--静态资源能访问，动态映射的请求就不行-->
     <mvc:default-servlet-handler/>
-    <!--SpringMVC可以保证动态请求和静态请求都能访问，专治各种不服-->
-    <mvc:annotation-driven></mvc:annotation-driven>
+    <!--SpringMVC可以保证动态请求和静态请求都能访问，专治各种不服
+    conversion-service="conversionService1"使用自己配置的类型转换组件-->
+    <mvc:annotation-driven conversion-service="conversionService1"></mvc:annotation-driven>
+
+   <!--告诉SpringMVC别用默认的ConversionService，而用自定义的ConversionService，可能有我们自己的Converter-->
+<!--    <bean id="conversionService1" class="org.springframework.context.support.ConversionServiceFactoryBean">-->
+<!--以后用自定义类型转换器时，就用FormattingConversionServiceFactoryBean,
+    这样既具有类型转换还具有格式化的功能-->
+    <bean id="conversionService1" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+    <!--converters转换器中添加自定义类型的转换器-->
+        <property name="converters">
+            <set>
+                <bean class="CRUD.components.MyStringToEmployeeConverter"></bean>
+            </set>
+        </property>
+    </bean>
 <!--    <bean class="CRUD.DAO.departmentDao"></bean>-->
 </beans>
