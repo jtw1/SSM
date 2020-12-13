@@ -31,5 +31,29 @@
             </set>
         </property>
     </bean>
-<!--    <bean class="CRUD.DAO.departmentDao"></bean>-->
+<!--测试拦截器-->
+    <mvc:interceptors>
+        <!--配置某个拦截器,默认是拦截所有请求-->
+        <bean class="CRUD.controller.MyFirstInterceptor"></bean>
+
+        <!--配置某个拦截器更详细的信息-->
+        <mvc:interceptor>
+            <!--只拦截test01请求-->
+            <mvc:mapping path="/test01"/>
+            <bean class="CRUD.controller.MySecondInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!--基于配置的异常处理方式-->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <!--exceptionMapping:配置哪些异常去哪些页面-->
+        <property name="exceptionMappings">
+            <props>
+                <!--key:异常全类名  value:要去的页面视图-->
+                <prop key="java.lang.NullPointerException">myError</prop>
+            </props>
+        </property>
+        <!--指定错误信息取出时使用的key-->
+        <property name="exceptionAttribute" value="ex"></property>
+    </bean>
 </beans>
