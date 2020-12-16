@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="prop/jdbcConfig.properties"></properties>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!--配置连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbcDriverClass}"/>
+                <property name="url" value="${jdbcUrl}"/>
+                <property name="username" value="${jdbcUsername}"/>
+                <property name="password" value="${jdbcPassword}"/>
+            </dataSource>
+        </environment>
+    </environments>
+<!--引入自己编写的每一个接口的实现文件-->
+    <mappers>
+        <mapper resource="employeeDao.xml"/>
+    </mappers>
+</configuration>
