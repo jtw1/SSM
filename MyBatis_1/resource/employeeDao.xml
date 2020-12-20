@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--写接口的全类名，相当于告诉MyBatis这个配置文件是实现哪个接口的-->
 <mapper namespace="org.exer.Dao.EmployeeDao">
+    <!--使用mybatis的默认二级缓存-->
+    <!--    <cache></cache>-->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"></cache>
     <!--select：用来定义一个查询操作
         id：方法名 相当于这个配置文件是对某个方法的实现
         resultType：指定方法运行后的返回值类型

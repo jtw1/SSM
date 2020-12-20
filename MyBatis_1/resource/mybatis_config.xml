@@ -7,6 +7,13 @@
     <!--resource:从类路径下开始使用
              url:引用磁盘路径或网络路径的资源-->
     <properties resource="prop/jdbcConfig.properties"></properties>
+    <settings>
+        <!--开启延迟加载开关-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--开启二级缓存(全局缓存)-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>

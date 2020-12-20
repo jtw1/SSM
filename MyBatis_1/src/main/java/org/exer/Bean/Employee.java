@@ -1,10 +1,12 @@
 package org.exer.Bean;
 
+import java.io.Serializable;
+
 /**
  * @Description
  * @date 2020/12/14 0014-20:21
  */
-public class Employee {
+public class Employee implements Serializable {
     private Integer id;
     private String empName;
     private Integer gender;
