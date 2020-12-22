@@ -12,6 +12,7 @@ import scala.io.BytePickle;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @Description
@@ -95,5 +96,22 @@ public class TestForMyBatis {
             openSession.close();
         }
         System.out.println(employee);
+    }
+
+    //测试查询所有员工
+    @Test
+    public void testSearchAll(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            EmployeeDao employeeDao = sqlSession.getMapper(EmployeeDao.class);
+            List<Employee> allEmps = employeeDao.getAllEmps();
+            for(Employee employee:allEmps){
+                System.out.println(employee);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
     }
 }

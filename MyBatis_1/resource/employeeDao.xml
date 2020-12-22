@@ -33,4 +33,10 @@
     <insert id="insertEmployee" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO t_employee(empName,gender,email) VALUES (#{empName},#{gender},#{email})
     </insert>
+
+    <!--查询所有员工：public List<Employee> getAllEmps()
+        resultType:如果返回的是集合，写的是集合里面元素的类型-->
+    <select id="getAllEmps" resultType="org.exer.Bean.Employee">
+        SELECT * FROM t_employee
+    </select>
 </mapper>
