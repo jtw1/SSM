@@ -1,1 +1,43 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!--resource:从类路径下开始使用
+             url:引用磁盘路径或网络路径的资源-->
+    <properties resource="jdbcConfig.properties"></properties>
+    <settings>
+        <!--驼峰命名规则-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--开启延迟加载开关-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--开启二级缓存(全局缓存)-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+    <typeAliases>
+        <package name="bean"/>
+    </typeAliases>
+    <!--注册pageHelper插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PaginationInterceptor">
+            <property name="parm1" value="value1"/>
+        </plugin>
+    </plugins>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!--配置连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbcDriverClass}"/>
+                <property name="url" value="${jdbcUrl}"/>
+                <property name="username" value="${jdbcUsername}"/>
+                <property name="password" value="${jdbcPassword}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--引入自己编写的每一个接口的实现文件-->
+    <mappers>
+        <mapper resource=""/>
+    </mappers>
+</configuration>
