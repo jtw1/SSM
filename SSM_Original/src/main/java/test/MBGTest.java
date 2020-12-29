@@ -1,4 +1,3 @@
-package Test;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
