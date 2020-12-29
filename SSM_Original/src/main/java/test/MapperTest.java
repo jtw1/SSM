@@ -1,3 +1,4 @@
+package test;
 
 import Dao.DepartmentMapper;
 
@@ -5,6 +6,8 @@ import Dao.DepartmentMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -18,19 +21,20 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:applicationContext.xml")
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = "classpath:applicationContext.xml")
 public class MapperTest {
-    @Autowired
-    DepartmentMapper departmentMapper;
+//    @Autowired
+//    DepartmentMapper departmentMapper;
     //测试departmentMapper
     @Test
     public void test1(){
-        System.out.println(departmentMapper);
+        System.out.println(111);
     }
-    public void test(){
-//        ApplicationContext ioc=new ClassPathXmlApplicationContext("SSM_Original/src/main/resources/applicationContext.xml");
-//        DepartmentMapper bean = ioc.getBean(DepartmentMapper.class);
-        System.out.println(departmentMapper);
+    @Test
+   public void test(){
+        ApplicationContext ioc=new ClassPathXmlApplicationContext("applicationContext.xml");
+        DepartmentMapper bean = ioc.getBean(DepartmentMapper.class);
+        System.out.println(bean);
     }
 }
